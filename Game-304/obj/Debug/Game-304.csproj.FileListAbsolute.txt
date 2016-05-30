@@ -1,0 +1,9 @@
+C:\Project-VS\Game-304\Game-304\bin\Debug\Game-304.exe.config
+C:\Project-VS\Game-304\Game-304\bin\Debug\Game-304.exe
+C:\Project-VS\Game-304\Game-304\bin\Debug\Game-304.pdb
+C:\Project-VS\Game-304\Game-304\obj\Debug\Game-304.csprojResolveAssemblyReference.cache
+C:\Project-VS\Game-304\Game-304\obj\Debug\Game_304.Game.resources
+C:\Project-VS\Game-304\Game-304\obj\Debug\Game_304.Properties.Resources.resources
+C:\Project-VS\Game-304\Game-304\obj\Debug\Game-304.csproj.GenerateResource.Cache
+C:\Project-VS\Game-304\Game-304\obj\Debug\Game-304.exe
+C:\Project-VS\Game-304\Game-304\obj\Debug\Game-304.pdb
