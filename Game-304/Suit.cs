@@ -8,9 +8,9 @@ namespace Game_304
 {
     public enum Suit
     {
+        Diamond,
         Club,
         Heart,
-        Spade,        
-        Diamond        
+        Spade
     }
 }

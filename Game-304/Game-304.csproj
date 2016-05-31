@@ -4,13 +4,28 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0309693B-6EC4-4435-9859-E3CCD0B5E835}</ProjectGuid>
+    <ProjectGuid>{755D742D-FA20-4130-8BC4-FBD4EC9256B0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Game_304</RootNamespace>
     <AssemblyName>Game-304</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,8 +47,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,17 +65,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithm.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Delegates.cs" />
+    <Compile Include="CardHand.cs" />
+    <Compile Include="CardPack.cs" />
     <Compile Include="Face.cs" />
-    <Compile Include="FourPlayers.cs" />
-    <Compile Include="GamePlay.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Suit.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,7 +80,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Table.cs" />
+    <Compile Include="Suit.cs" />
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,8 +92,8 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +106,65 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Cards\Club\Ace.png" />
+    <Content Include="Cards\Club\Eight.png" />
+    <Content Include="Cards\Club\Jack.png" />
+    <Content Include="Cards\Club\King.png" />
+    <Content Include="Cards\Club\Nine.png" />
+    <Content Include="Cards\Club\Queen.png" />
+    <Content Include="Cards\Club\Seven.png" />
+    <Content Include="Cards\Club\Ten.png" />
+    <Content Include="Cards\Diamond\Ace.png" />
+    <Content Include="Cards\Diamond\Eight.png" />
+    <Content Include="Cards\Diamond\Jack.png" />
+    <Content Include="Cards\Diamond\King.png" />
+    <Content Include="Cards\Diamond\Nine.png" />
+    <Content Include="Cards\Diamond\Queen.png" />
+    <Content Include="Cards\Diamond\Seven.png" />
+    <Content Include="Cards\Diamond\Ten.png" />
+    <Content Include="Cards\Heart\Ace.png" />
+    <Content Include="Cards\Heart\Eight.png" />
+    <Content Include="Cards\Heart\Jack.png" />
+    <Content Include="Cards\Heart\King.png" />
+    <Content Include="Cards\Heart\Nine.png" />
+    <Content Include="Cards\Heart\Queen.png" />
+    <Content Include="Cards\Heart\Seven.png" />
+    <Content Include="Cards\Heart\Ten.png" />
+    <Content Include="Cards\Club.png" />
+    <Content Include="Cards\Diamond.png" />
+    <Content Include="Cards\Heart.png" />
+    <Content Include="Cards\Spade.png" />
+    <Content Include="Cards\Spade\Ace.png" />
+    <Content Include="Cards\Spade\Eight.png" />
+    <Content Include="Cards\Spade\Jack.png" />
+    <Content Include="Cards\Spade\King.png" />
+    <Content Include="Cards\Spade\Nine.png" />
+    <Content Include="Cards\Spade\Queen.png" />
+    <Content Include="Cards\Spade\Seven.png" />
+    <Content Include="Cards\Spade\Ten.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
